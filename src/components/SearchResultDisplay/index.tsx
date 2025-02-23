@@ -1,20 +1,23 @@
 "use client"
 import React from "react";
+import {SearchResult} from "@/definitions/searchDefinitions";
+import {SearchResultRecord} from "@/components/SearchResultRecord";
+import classNames from "classnames";
 
 interface SearchResultProps {
-    searchResults: SearchResult,
+    searchResult: SearchResult | null,
     isLoading: boolean,
     error: string | null,
 }
 
-export const SearchResult = (props: SearchResultProps) => {
+export const SearchResultDisplay = (props: SearchResultProps) => {
     const {
-        searchResults,
+        searchResult,
         isLoading,
         error,
     } = props
 
-    if (isLoading) {
+    if (isLoading || !searchResult) {
         return null
     }
     if (error) {
@@ -25,14 +28,31 @@ export const SearchResult = (props: SearchResultProps) => {
         )
     }
 
+    const {
+        Page,
+        PageSize,
+        TotalNumberOfResults,
+        ResultItems,
+    } = searchResult
+
+    const pageCount = Math.ceil(TotalNumberOfResults / PageSize)
+
     return (
-        <div className="flex flex-col gap-4">
-            {searchResults.map((result, index) => (
-                <div key={index} className="text-[#282828]">
-                    <span>{result.title}</span>
-                    <span>{result.description}</span>
-                </div>
-            ))}
+        <div className={'py-12'}>
+            <div className="flex items-center justify-between">
+                <span
+                    className={"text-[#282828] font-semibold text-xl"}>{`Showing ${Page}/${pageCount} of ${TotalNumberOfResults} results`}</span>
+            </div>
+            <div className="search-result-list py-11 flex flex-col gap-4">
+                {ResultItems.map((result) => {
+                    return (
+                        <div className={"mb-10"}
+                             key={result.DocumentId}>
+                            <SearchResultRecord result={result}/>
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     )
 }

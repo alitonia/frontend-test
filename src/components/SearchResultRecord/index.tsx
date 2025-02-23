@@ -1,20 +1,29 @@
 import Link from "next/link";
 import React from "react";
+import {SearchResultItem} from "@/definitions/searchDefinitions";
+import {HighlightText} from "@/components/HighlightText";
 
 interface SearchResultItemProps {
     result: SearchResultItem,
 }
-export const SearchResultItem = (props) => {
-    const { result } = props;
+
+export const SearchResultRecord = (props: SearchResultItemProps) => {
+    const {result} = props;
 
     return (
-        <div className="text-[#282828]">
+        <div className="search-result-item text-[#282828]">
             <h3 className={"text-[#1c76d5] font-semibold text-xl"}>
                 <Link href={result.DocumentURI}>
                     {result.DocumentTitle.Text}
                 </Link>
             </h3>
-            <h5 className={'mt-2 mb-4'}>{result.DocumentExcerpt.Text}</h5>
+
+            <h5 className={'mt-2 mb-4'}>
+                <HighlightText Text={result.DocumentExcerpt.Text}
+                               Highlights={result.DocumentExcerpt.Highlights}
+                />
+            </h5>
+
             <h6 className={'text-[#777]'}>
                 <Link href={result.DocumentURI}>
                     {result.DocumentURI}
