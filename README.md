@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Introduction
+
+This project is a Next.js application that provides a search functionality.
 
 ## Getting Started
 
-First, run the development server:
+These instructions will get you a copy of the project up and running on your local machine for development and testing
+purposes.
 
-```bash
+### Prerequisites
+
+- Node.js (v22 or later)
+- npm (v6 or later)
+
+### Installation
+
+1. Clone the repository:
+   git clone https://github.com/alitonia/singgov-frontend.git
+   cd singgov-frontend
+
+2. Install the dependencies:
+   npm install
+
+### Running the Application
+
+To start the development server:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at `http://localhost:3000/search`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Running the Tests
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project uses Cypress for end-to-end testing.
 
-## Learn More
+### Opening Cypress Test Runner
 
-To learn more about Next.js, take a look at the following resources:
+To open the Cypress Test Runner:
+npm run cypress:open
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This will open the Cypress Test Runner. Click on "E2E Testing" and then select your browser. You can then click on the
+`search.cy.js` file to run the tests.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Running Cypress Tests Headlessly
 
-## Deploy on Vercel
+To run the Cypress tests in headless mode (useful for CI/CD):
+npm run cypress:run
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/`: Contains the source code for the application
+    - `app/`: Next.js app directory
+    - `components/`: React components
+    - `hooks/`: Custom React hooks
+    - `utils/`: Utility functions
+- `cypress/`: Contains Cypress test files
+    - `e2e/`: End-to-end test specifications
+    - `support/`: Support files for Cypress tests
+
+## Built With
+
+- [Next.js](https://nextjs.org/) - The React framework used
+- [React](https://reactjs.org/) - JavaScript library for building user interfaces
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
+- [Cypress](https://www.cypress.io/) - End-to-end testing framework
+
+## Contributing
+
+_Coming soon..._
+# frontend-test
