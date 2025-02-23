@@ -15,7 +15,7 @@ purposes.
 ### Installation
 
 1. Clone the repository:
-   git clone https://github.com/alitonia/singgov-frontend.git
+   git clone https://github.com/alitonia/frontend-test
    cd singgov-frontend
 
 2. Install the dependencies:
