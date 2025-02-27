@@ -1,0 +1,43 @@
+import React from "react";
+import {Banner} from "../../components/Banner";
+import {SearchBar} from "../../components/SearchBar";
+import {SearchResultDisplay} from "../../components/SearchResultDisplay";
+import {useSearchHook} from "../../hooks/SearchHook";
+import {Link} from "react-router";
+
+import {ToastContainer} from "react-toastify";
+
+export function meta() {
+    return [
+        {title: "Search Page"},
+        {name: "description", content: "Search function of the page"},
+    ];
+}
+
+
+export default function SearchPage() {
+
+    const talons = useSearchHook({
+        disable: false
+    })
+
+    return (
+        <div className="min-h-screen flex flex-col items-center p-8">
+            <Banner text={'Welcome to the Singapore Government'}/>
+
+            <div className="w-full lg:px-[15%] md:px-[5%] py-12">
+                <SearchBar
+                    {...talons}
+                />
+                <SearchResultDisplay
+                    {...talons}
+                />
+            </div>
+            <ToastContainer/>
+
+            <Link to="/" className="mt-8 text-blue-500 hover:underline">
+                Back to Home
+            </Link>
+        </div>
+    );
+}
